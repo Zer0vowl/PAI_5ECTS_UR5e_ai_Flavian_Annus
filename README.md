@@ -25,4 +25,22 @@ git clone https://github.com/UniversalRobots/Universal_Robots_ROS2_Description.g
 git clone https://github.com/UniversalRobots/Universal_Robots_ROS2_Gazebo_Simulation.git
 
 # This package
-git clone https://github.com/<your-user>/ur5e_ai.git
+git clone git@github.com:Zer0vowl/PAI_5ECTS_UR5e_ai_Flavian_Annus.git
+
+# 2. Build workspace
+cd ~/pai_ws
+colcon build --symlink-install
+source install/setup.bash
+
+# Run UR5e simulation
+cd ~/pai_ws
+source install/setup.bash
+
+ros2 launch ur_simulation_gazebo ur_sim_moveit.launch.py
+
+# In a separate terminal run DMP or Moveit controller
+cd ~/pai_ws
+source install/setup.bash
+
+ros2 run ur5e_ai ai_dmp_controller
+ros2 run ur5e_ai ai_dmp_moveit_controller
